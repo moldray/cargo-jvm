@@ -1,6 +1,7 @@
 [package]
-name = "raj"
+name = "cargo-jvm"
 version = "0.1.0"
 authors = ["moldray <leids@foxmail.com>"]
 
 [dependencies]
+clap = "~2.31"
