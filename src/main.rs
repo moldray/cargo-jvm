@@ -37,7 +37,6 @@ fn main() {
     ("ls", Some(ls_matches)) => {
       if ls_matches.is_present("remote") {
         println!("Versions available for julia language:");
-        println!("julia_aws: {}", julia_aws);
 
         let output = Command::new("git")
           .arg("ls-remote")
@@ -48,6 +47,7 @@ fn main() {
 
         let st = String::from_utf8_lossy(&output.stdout);
         let lines = st.split("\n");
+
         for line in lines {
           let parts:Vec<&str> = line.split("refs/tags/").collect();
 
@@ -57,6 +57,7 @@ fn main() {
         }
       } else {
         println!("list locale versions...");
+        println!("julia_aws: {}", julia_aws);
       }
     },
     ("install", Some(install_matches)) => {
