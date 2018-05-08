@@ -2,7 +2,8 @@
 extern crate clap;
 
 use clap::{App, Arg, SubCommand};
-use std::process::*;
+use std::process::Command;
+use std::env;
 
 fn main() {
   let julia_repo = "https://github.com/JuliaLang/julia";
@@ -58,6 +59,10 @@ fn main() {
       } else {
         println!("list locale versions...");
         println!("julia_aws: {}", julia_aws);
+        match env::home_dir() {
+          Some(path) => println!("{}", path.display()),
+          None => println!("Impossible to get your home dir!"),
+        }
       }
     },
     ("install", Some(install_matches)) => {
